@@ -1,5 +1,5 @@
 from typing import Final
-from telegram import Update
+from telegram import Update, constants
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 from main_parser import phys, inf, math
 
@@ -15,7 +15,8 @@ async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("потом добавлю")
 
 async def custom_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(*inf)
+    ans = f'Информатика\n\n{inf}\nМатематика\n\n{math}\nФизика\n\n{phys}'
+    await update.message.reply_text(text=ans)
 
 # Responses
 
